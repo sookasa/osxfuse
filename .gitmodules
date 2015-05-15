@@ -16,6 +16,3 @@
 [submodule "prefpane"]
 	path = prefpane
 	url = ../prefpane.git
-[submodule "support"]
-        path = support
-        url = ../support.git
