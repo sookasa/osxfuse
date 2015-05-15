@@ -13,6 +13,3 @@
 [submodule "macfuse_fuse"]
         path = macfuse_fuse
         url = ../fuse.git
-[submodule "prefpane"]
-	path = prefpane
-	url = ../prefpane.git
