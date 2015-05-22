@@ -9,23 +9,24 @@
 
 SCRIPT=$(basename "$0")
 DIR=$(dirname "$0")
-USAGE="Usage: $0"
-EXAMPLE="Example: $0"
+USAGE="Usage: $0 <sign-identity>"
+EXAMPLE="Example: $0 F2YUFJ8856"
 PWD=$(pwd)
 
-if [ $# != 0 ]; then
+if [ $# != 1 ]; then
     echo $USAGE
     echo $EXAMPLE
     exit 1
 fi
 
+identity=$1
 
 # check build script
-build=./build.sh
-test -f ./build.sh || { echo "-E- couldn't find builder script $build"; exit 1; }
+build="$DIR/build.sh"
+test -f "$DIR/build.sh" || { echo "-E- couldn't find builder script $build"; exit 1; }
 
 # check config files
-config=fuse/kernel/configure.ac
+config="$DIR/fuse/kernel/configure.ac"
 test -f $config || { echo "-E- couldn't find $config"; exit 1; }
 
 # locate version 
@@ -38,7 +39,8 @@ echo "-I- Detected version $ver"
 echo "-I- Package location"
 
 # build project
-cmd="./build.sh -q -t dist"
+# $build -t clean # comment this out to start clean
+cmd="$build -q -t dist -i $identity -j $identity"
 echo "-I- Running $cmd"
 $cmd || { echo "-E- Build failed"; exit 2; }
 echo "-I- Build complete!"
