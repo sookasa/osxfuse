@@ -53,7 +53,7 @@ The Xcode tools packages can be obtained from https://developer.apple.com/downlo
 
 To clone the source repository into a newly created subdirectory named `osxfuse` in the current working directory, run the following command in Terminal:
 
-    git clone --recursive -b osxfuse-2 git://github.com/osxfuse/osxfuse.git osxfuse
+    git clone --recursive -b osxfuse-2 https://github.com/sookasa/osxfuse osxfuse
 
 Run the following command in the cloned repository to build FUSE for OS X from source:
 
