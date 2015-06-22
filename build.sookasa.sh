@@ -30,7 +30,8 @@ config="$DIR/fuse/kernel/configure.ac"
 test -f $config || { echo "-E- couldn't find $config"; exit 1; }
 
 # locate version 
-ver=`grep AC_INIT fuse/kernel/configure.ac | awk '{print $2}' | cut -d\. -f1-3`
+#ver=`grep AC_INIT fuse/kernel/configure.ac | awk '{print $2}' | cut -d\. -f1-3`
+ver=`grep "#define OSXFUSE_VERSION_LITERAL" kext/common/fuse_version.h | awk  '{print $3}'`
 shortver=`echo $ver| cut -d\. -f1-2`
 pkg="/tmp/osxfuse-$shortver/OSXFUSE.pkg"
 rm "$pkg" &> /dev/null
