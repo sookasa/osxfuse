@@ -10,7 +10,7 @@
 SCRIPT=$(basename "$0")
 DIR=$(dirname "$0")
 USAGE="Usage: $0 <sign-identity>"
-EXAMPLE="Example: $0 F2YUFJ8856"
+EXAMPLE="Example: $0 UFEM256A84"
 PWD=$(pwd)
 
 if [ $# != 1 ]; then
@@ -39,7 +39,7 @@ echo "-I- Detected version $ver"
 echo "-I- Package location"
 
 # build project
-# $build -t clean # comment this out to start clean
+$build -t clean # comment this out to start clean
 cmd="$build -q -t dist -i $identity -j $identity"
 echo "-I- Running $cmd"
 $cmd || { echo "-E- Build failed"; exit 2; }
