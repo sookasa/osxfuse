@@ -37,14 +37,19 @@ pkg="/tmp/osxfuse-$shortver/OSXFUSE.pkg"
 rm "$pkg" &> /dev/null
 
 echo "-I- Detected version $ver"
-echo "-I- Package location"
+echo "-I- Package location $pkg"
+
+# cleanups
+cmd="$build -t clean"
+echo "-I- Running $cmd"
+$cmd || { echo "-E- Cleanup failed"; exit 2; }
+echo "-I- Cleanup complete!"
 
 # build project
-$build -t clean # comment this out to start clean
-cmd="$build -q -t dist -i $identity -j $identity"
+cmd="$build -c Release -q -t dist -i $identity -j $identity"
 echo "-I- Running $cmd"
 $cmd || { echo "-E- Build failed"; exit 2; }
-echo "-I- Build complete!"
+echo "-I- Build complete! ($ver)"
 test -f "$pkg" || { echo "-E- couldn't find $pkg, abort"; exit 2; }
 
 # locate destination
