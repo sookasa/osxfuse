@@ -90,8 +90,8 @@ done
 [ $ans = "no" ] && { echo "-I- stopped!"; exit 1; }
 
 # remove old files
-test -f "$pkg_dst" && echo "-I- Remove old pkg file " && rm "$pkg_dst"
-test -f "$pkg_dst" && echo "-I- Remove old csum file" && rm "$csum_dst"
+test -f "$pkg_dst"  && echo "-I- Remove old pkg file " && rm "$pkg_dst"
+test -f "$csum_dst" && echo "-I- Remove old csum file" && rm "$csum_dst"
 
 # copy new file to destination
 cp "$pkg" "$pkg_dst"     || { echo "-E- failed to copy $pkg to $pkg_dst!"; exit 3; }
