@@ -45,7 +45,7 @@ pkg_dst="$pkg_dst_dir/OSXFUSE.pkg"
 csum_dst="$pkg_dst_dir/OSXFUSE.csum"
 
 # calc current csum
-csum=`tar --exclude=".*" -c "$DIR" | md5`
+csum=`find "$DIR" -type f -name "*.c" -not -path '*build*' -not -path '*Template*' -exec md5 {} + | awk '{print $4}' | sort | md5`
 echo "-I- Current csum  $csum"
 csum2=00000000000000000000000000000000
 test -f "$csum_dst" && csum2=`cat "$csum_dst"`
