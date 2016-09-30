@@ -15,7 +15,7 @@ EXAMPLE="Example: $0 https://github.com/sookasa/upstream"
 # default configuration
 url=https://github.com/osxfuse/osxfuse
 name=upstream
-branch=osxfuse-2
+branch=support/osxfuse-2
 
 # process input
 if [ $# -gt 1 ]; then
